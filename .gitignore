@@ -1,2 +1,59 @@
+# ==========================================
+# Python 관련 캐시 및 가상환경
+# ==========================================
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+.mypy_cache/
+
+# 가상환경 (venv)
+.venv/
+venv/
+ENV/
+env/
+
+# ==========================================
+# 운영체제 (OS) 메타데이터 파일
+# ==========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows / WSL
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ==========================================
+# 에디터 및 IDE 설정
+# ==========================================
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Vim / 임시 백업 파일
+*.swp
+*.swo
+*~
+*.bak
+*.tmp
+*.temp
+
+# ==========================================
+# 환경 변수 및 로그 (보안)
+# ==========================================
+.env
+.env.local
+*.log
