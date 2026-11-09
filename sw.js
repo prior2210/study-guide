@@ -1,4 +1,4 @@
-const CACHE_NAME = 'csat-guide-447c9d09';
+const CACHE_NAME = 'csat-guide-0d2e18d0';
 const ASSETS = [
   './',
   './index.html',

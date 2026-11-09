@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-WORKSPACE = Path("/home/prior2210/test")
+WORKSPACE = Path(__file__).resolve().parent
 
 SUBJECT_META = [
     {"id": "국어", "name": "국어", "group": "공통·필수", "emoji": "📖", "color": "#f76707", "file": "국어.md"},
@@ -336,7 +336,7 @@ def render_table(rows, ctx: ParseCtx) -> str:
 def is_block_start(l: str) -> bool:
     s = l.strip()
     return bool(
-        re.match(r'^#{2,3}\s', s)
+        re.match(r'^#{1,3}\s', s)
         or s.startswith('```')
         or s.startswith('|')
         or re.match(r'^-{3,}$', s)
@@ -365,6 +365,10 @@ def parse_doc(md: str, subj_id: str):
         line = lines[i]
         s = line.strip()
         if not s or re.match(r'^-{3,}$', s):
+            i += 1
+            continue
+        if re.match(r'^#\s+', s):
+            # 최상단 H1 제목은 웹앱 상단 헤더로 자동 표시되므로 인트로 본문에서 안전하게 건너뜀
             i += 1
             continue
         if s.startswith('```'):
@@ -3465,7 +3469,8 @@ self.addEventListener('fetch', e => {{
 """
     (WORKSPACE / "sw.js").write_text(sw_code, encoding="utf-8")
     (WORKSPACE / ".nojekyll").write_text("", encoding="utf-8")
-    (WORKSPACE / ".gitignore").write_text("__pycache__/\n*.pyc\n", encoding="utf-8")
+    if not (WORKSPACE / ".gitignore").exists():
+        (WORKSPACE / ".gitignore").write_text("__pycache__/\n*.pyc\n", encoding="utf-8")
 
     print(f"Successfully generated {out_path} and {index_path} (hash: {content_hash}, {len(final_html):,} chars, {len(final_html.encode('utf-8')):,} bytes)")
 
