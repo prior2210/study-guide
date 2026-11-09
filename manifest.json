@@ -1,0 +1,16 @@
+{
+  "name": "수능 과목별 학습 가이드 (고2 맞춤형)",
+  "short_name": "수능 가이드",
+  "description": "고등학교 2학년 내신·수능 1등급을 위한 전 과목 실전 학습 가이드",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f6f7fb",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
